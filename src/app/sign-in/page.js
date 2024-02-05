@@ -1,13 +1,19 @@
 'use client'
 import { useRouter } from "next/navigation";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 
 export default function SignIn() {
   const router = useRouter();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const signUp = useCallback(() => {
     router.push('/sign-in/sign-up');
   }, [router]);
+
+  const signIn = useCallback(() => {
+    // Add sign in function
+  }, [email, password]);
 
   return (
     <div className="h-screen bg-white py-6">
@@ -27,12 +33,12 @@ export default function SignIn() {
             Sign in
           </div>
           <div className="px-8 text-xl my-auto">
-            Username:
-            <input className="bg-white w-full px-1 text-black"/>
+            Email:
+            <input className="bg-white w-full px-1 text-black" onChange={(e) => setEmail(e.target.value)}/>
           </div>
           <div className="px-8 py-15 text-xl mt-5">
             Password:
-            <input className="bg-white w-full px-1 text-black"/>
+            <input className="bg-white w-full px-1 text-black" onChange={(e) => setPassword(e.target.value)}/>
           </div>
           <div className="px-8 py-1">
             New to FotoMind?{`  `}
@@ -41,7 +47,7 @@ export default function SignIn() {
             </button>
           </div>
           <div className="py-5 px-8">
-            <button className="h-10 w-full bg-blue rounded-lg">
+            <button className="h-10 w-full bg-blue rounded-lg" onClick={signIn()}>
               Continue
             </button>
           </div>

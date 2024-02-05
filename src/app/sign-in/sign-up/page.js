@@ -1,13 +1,16 @@
 'use client'
 import { useRouter } from "next/navigation";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 
 export default function SignUp() {
   const router = useRouter();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const goLogin = useCallback(() => {
-    router.push('/');
-  }, [router]);
+  const signUp = useCallback(() => {
+    // Call sign up function
+  }, [name, email, password]);
 
   return (
     <div className="h-screen bg-white py-6">
@@ -28,18 +31,18 @@ export default function SignUp() {
           </div>
           <div className="px-8 text-xl my-auto">
             Username:
-            <input className="bg-white w-full px-1 text-black"/>
+            <input className="bg-white w-full px-1 text-black" onChange={(e) => setName(e.target.value)}/>
           </div>
           <div className="px-8 text-xl my-auto mt-5">
             Email:
-            <input className="bg-white w-full px-1 text-black"/>
+            <input className="bg-white w-full px-1 text-black" onChange={(e) => setEmail(e.target.value)}/>
           </div>
           <div className="px-8 py-15 text-xl mt-5 mb-4">
             Password:
-            <input className="bg-white w-full px-1 text-black"/>
+            <input className="bg-white w-full px-1 text-black" onChange={(e) => setPassword(e.target.value)}/>
           </div>
           <div className="py-5 px-8">
-            <button className="h-10 w-full bg-blue rounded-lg">
+            <button className="h-10 w-full bg-blue rounded-lg" onClick={signUp()}>
               Continue
             </button>
           </div>
