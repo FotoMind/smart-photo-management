@@ -7,15 +7,14 @@ import { getAnalytics } from "firebase/analytics";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAR6CvQ9-KcdmCoPlHsCTOEkNSyoVXJ3Uc",
-  authDomain: "fotomind-41e56.firebaseapp.com",
-  projectId: "fotomind-41e56",
-  storageBucket: "fotomind-41e56.appspot.com",
-  messagingSenderId: "1038416838263",
-  appId: "1:1038416838263:web:768008155197f1d8815072",
-  measurementId: "G-Q9HJ5YSWWX"
+  apiKey: "AIzaSyA5kA8SW7S5-2t3xI4-798xpcSV0Od2TME",
+  authDomain: "fotomind-c819d.firebaseapp.com",
+  projectId: "fotomind-c819d",
+  storageBucket: "fotomind-c819d.appspot.com",
+  messagingSenderId: "971456475055",
+  appId: "1:971456475055:web:9b57b990144d9360f9495a",
+  measurementId: "G-W5CJYDK697"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
