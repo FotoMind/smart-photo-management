@@ -1,19 +1,32 @@
 'use client'
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { auth } from "@/app/firebase/config";
 
 export default function SignIn() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
 
   const signUp = useCallback(() => {
-    router.push('/sign-in/sign-up');
+    router.push('/sign-up');
   }, [router]);
 
-  const signIn = useCallback(() => {
+  const signIn = async () => {
     // Add sign in function
-  }, [email, password]);
+    try {
+      const res = await signInWithEmailAndPassword(email, password);
+      console.log({res});
+      sessionStorage.setItem('user', true);
+      setEmail("");
+      setPassword("");
+      router.push("/dashboard");
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   return (
     <div className="h-screen bg-white py-6">
@@ -47,7 +60,7 @@ export default function SignIn() {
             </button>
           </div>
           <div className="py-5 px-8">
-            <button className="h-10 w-full bg-blue rounded-lg" onClick={signIn()}>
+            <button className="h-10 w-full bg-blue rounded-lg" onClick={() => signIn()}>
               Continue
             </button>
           </div>
