@@ -1,14 +1,16 @@
 'use client'
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { auth } from "@/app/firebase/config";
+import { FaGoogle } from "react-icons/fa";
 
 export default function SignIn() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
 
   const signUp = useCallback(() => {
     router.push('/sign-up');
@@ -27,6 +29,19 @@ export default function SignIn() {
       console.error(e);
     }
   };
+
+  const googleSignUp = async () => {
+    try {
+      const res = await signInWithGoogle();
+      console.log({res});
+      sessionStorage.setItem('user', true);
+      setEmail("");
+      setPassword("");
+      router.push("/dashboard");
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
   return (
     <div className="h-screen bg-white py-6">
@@ -62,6 +77,12 @@ export default function SignIn() {
           <div className="py-5 px-8">
             <button className="h-10 w-full bg-blue rounded-lg" onClick={() => signIn()}>
               Continue
+            </button>
+          </div>
+          <div className="text-white text-center py-10 content-center">
+            Login with Google: {`   `}
+            <button className="" onClick={() => googleSignUp()}>
+              <FaGoogle className="text-3xl"/>
             </button>
           </div>
         </div>

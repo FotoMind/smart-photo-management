@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react";
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { auth } from '@/app/firebase/config';
 import { useRouter } from "next/navigation";
 
@@ -9,9 +9,11 @@ export default function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
+  
 
   // Array where the first element allows us to create a user
   const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
 
   const signUp = async () => {
     // Call sign up function
@@ -26,6 +28,19 @@ export default function SignUp() {
       console.error(e);
     }
   };
+
+  const googleSignUp = async () => {
+    try {
+      const res = await signInWithGoogle();
+      console.log({res});
+      sessionStorage.setItem('user', true);
+      setEmail("");
+      setPassword("");
+      router.push("/dashboard");
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
   return (
     <div className="h-screen bg-white py-6">
