@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { setPersistence, browserSessionPersistence } from 'firebase/auth';
 import { auth } from "@/app/firebase/config";
 import { FaGoogle } from "react-icons/fa";
 
@@ -19,6 +20,7 @@ export default function SignIn() {
   const signIn = async () => {
     // Add sign in function
     try {
+      setPersistence(auth, browserSessionPersistence);
       const res = await signInWithEmailAndPassword(email, password);
       console.log({res});
       sessionStorage.setItem('user', true);

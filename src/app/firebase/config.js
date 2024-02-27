@@ -1,6 +1,7 @@
 import { getApp, initializeApp, getApps } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { getAuth, setPersistence } from 'firebase/auth';
 import { GoogleAuthProvider } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -14,11 +15,14 @@ const firebaseConfig = {
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp()
 
 const auth = getAuth(app)
+setPersistence(auth, 'SESSION');
 
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({
     'login_hint': 'user@example.com'
-  });
+});
 
-export {app, auth, provider}
+const storage = getStorage(app);
+
+export {app, auth, provider, storage}
 
