@@ -24,6 +24,7 @@ export default function SignUp() {
       setEmail("");
       setPassword("");
       router.push("/dashboard");
+      createFolder(user.uid);
     } catch (e) {
       console.error(e);
     }
@@ -37,6 +38,7 @@ export default function SignUp() {
       setEmail("");
       setPassword("");
       router.push("/dashboard");
+      createFolder(user.uid);
     } catch (e) {
       console.error(e);
     }
@@ -76,4 +78,8 @@ export default function SignUp() {
       </div>
     </div>
   );
+}
+
+function createFolder (userID) {
+  let folder = storageRef.child('/' + userID + '/default.txt');
 }

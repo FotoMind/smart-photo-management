@@ -10,6 +10,7 @@ export default function dashboard() {
   const router = useRouter();
   const userSession = sessionStorage.getItem('user');
 
+
   if(!user && !userSession) {
     router.push('/');
   }
