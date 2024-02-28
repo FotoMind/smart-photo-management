@@ -2,17 +2,20 @@
 import { useState } from "react";
 import { storage } from "@/app/firebase";
 import { ref, uploadBytes} from "firebase/storage"
+import { auth } from "@/app/firebase/config";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function Upload() {
+    
     const [imageUpload, setImageUpload] = useState(null);
+    const [user] = useAuthState(auth);
+
+
 
     const uploadImage = () => {
-        console.log("got here");
         if (imageUpload == null) return;
-            console.log("image was set");
-            const imageRef = ref(storage, 'images/${imageUpload.name}'); // add user in curly brace: 'images/${user}'
+            const imageRef = ref(storage, 'images/' + user.uid + '/' + uploadImage.name); // add user in curly brace: 'images/${user}'
             uploadBytes(imageRef, imageUpload).then(() => {
-                console.log("image should be uploaded")
                 alert("Image Uploaded!");
         }) ;
     };
