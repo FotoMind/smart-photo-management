@@ -4,16 +4,39 @@ import { auth } from "@/app/firebase/config";
 import { useRouter } from "next/navigation";
 import { signOut } from 'firebase/auth';
 import { useEffect } from "react";
+import { useState } from 'react';
+
 
 export default function dashboard() {
   const [user] = useAuthState(auth);
   const router = useRouter();
   const userSession = sessionStorage.getItem('user');
+  const [showPopup, setShowPopup] = useState(false);
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
 
   if(!user && !userSession) {
     router.push('/');
   }
 
+  const openUploadPopup = () => {
+    // Adjust the URL as needed
+    const uploadUrl = 'https://google.com/'; // Replace with your upload URL
+    const popupWindow = window.open(uploadUrl, 'Upload Picture', 'width=600,height=400');
+    // Optionally, you can perform actions after the popup is closed
+    if (popupWindow) {
+      popupWindow.addEventListener('unload', () => {
+        // Do something after the popup is closed, if needed
+        console.log('Popup window closed');
+      });
+    }
+  }
+
+
+
+
+  
   return (
     <div className="h-screen bg-white py-6">
       <div className="flex justify-center text-4xl text-black flex-row w-screen h-15">
@@ -34,7 +57,9 @@ export default function dashboard() {
       </div>
       <div className="text-white flex text-xl justify-center h-60 my-5 mx-5 bg-blue rounded-lg">
         <div className="justify-center my-auto">
-          FotoMind Home Page
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={openUploadPopup}>
+            Upload Picture
+          </button>
         </div>
       </div>
     </div>
