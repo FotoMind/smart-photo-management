@@ -5,13 +5,17 @@ import { ref, listAll, getDownloadURL} from "firebase/storage"
 import { auth } from "@/app/firebase/config";
 import { useAuthState } from "react-firebase-hooks/auth";
 
+
+
 export default function Dashboard() {
 
 
     const [user] = useAuthState(auth);
 
-    const imageListRef = ref(storage, 'images/'); // add user in curly brace: 'images/${user}'
+    const imageListRef = ref(storage, ('images/' + user.uid)); // add user in curly brace: 'images/${user}'
     const [imageList, setImageList] = useState([]);
+
+    
     useEffect(() => {
         listAll(imageListRef).then((response) => {
             response.items.forEach((item) => {
