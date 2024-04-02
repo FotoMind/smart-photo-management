@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "fotomind-c819d",
+  "private_key_id": "ce5407ce80d145695f0e99a634e61bf3d8de330c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC5/MuECHnj7xU8\nw6un9+7HyUs650Q06zG7E3joi/1OGkbGUOVYFIJCwNetE0Ck4tE4z4McVclQ4Iu3\nkTRvElrwIw+bP3wt0vYRv+114iK3ZOeB/dE3py9dAttbjWeR2sukZLAZ1FcrLW1b\nCG3aHUfKV+XhD1jEv81wANVZHOhgJlH5H5C/DAP9GKCHMghWB0qODnTE4YrPNGAt\n1px4Rn3RvCAGR5q9sAqqaktlB+BDAlOGQ4nPG3LQTu/cWEasEGKpUg8qROJz7wjr\nCxaaZKt+vzF3A4uwXaKcWXgQ5wjyvugjSgSWHHUtOWURswSZpCyTrg0L1VVsaaHB\nErfNYY8rAgMBAAECggEAXI+bGZK+Vtndz+fxvh5+D5/2eNIv98Y1cc03F0TUQ9J/\n9qK8ASHz0hT3QYObYHQhfAyKS8fF8SJPZoQ1fDG+YFSSp8jonEWpgRvrqgdpD6yA\nKwmO3guuXrPVR7MQIF6rip0xpykuWKa7DdscELkRyXoFRgTFQOXT8DH5++ePHooa\ngJMX1f+G/aXI8VWLd3fISXreZrBVuptKD4iF28EJJ7YtpvN1MaPaA6hMEMTf/7lX\nB9+UcbBUx0JlccX07oWMryr9L8MEWGb840CpRVGEPkFiFg/kOl/g2LO9CDHbqCIy\nlc6K9u6ODAqrGnVksGsdKyFmYaH9O2UZEXYchC7tQQKBgQDa0DvFn8rAeRomoRLb\n9UCgQikLXtnJjbQXJyKzjTHjCXvy7XVrqL+rMgVB3Ctfu5GttctmeWxtetDP89bW\nP74y6ChLqKQ/7vBYWvqTYjOMEEa7PFAxCw0/2O/LsKaJkjcE3LUPdwuQdCzjrDEW\nwb+aZKXuIom49GMUtJan3QDGLQKBgQDZmG0NS6dCqKBtCJsl/yxDbzkM9SQ6O0bb\nfv2Vn50zK7egN0QeFpA1+BgOrNVWfFDCcAhmAlJ6gXP6c6/qM/pQ/zQXD1iEqrTO\nPtTzcX+Zf+HivKm6osUm+0LSxfuFxCJ1ZBW8gOIDF+u8MRKrbWaBToBaqi/t3erj\nRcG2sc+ZtwKBgEpARTgvnB6qOZyIJh0r4S1ApirsmdzSUB1XM2hYbmhLjJsHx0Os\nNLZEOBJ8Qt+uh6W5vfbdF1UjSv52ER4M7V7a9umNpYbobvicjtE6jqFl2Iqq0c+C\nn5Fd7SlinXCrhC4LMwm3bN4s/hqYEORXBMzAgKoJYFC55XFeQo1d6mhVAoGAKQfr\nGGS5p4Iwrh6/UszpRdYFRgI70Jc4507s9nfgprOJrrZ9K8dJbkPYFXxVxjcu61tA\n2it57gvXGNUTyPAANaHJ6sdEA9BEw9dpRHaUfxd0OtMklkL3NkCO+zvGEBVKAiTb\nTG5pL/gkxZnjUVwRxjRNU8tfulTsY+rVemPRJ8UCgYEAi6bQo+kI8tFN5fduPDaR\nE2DC7xcc/FEv5kPwuFB243JVvtvW/daYExrMsHEBgBseyIekY7I7OTJRtfMo6raW\nkCutEINe3hjt4m+ASrX7n6iiPICjH27aXe5Du3F3dF2Cm8pQ9+COrfLj4mezWGWd\ng36y9Cmn5A1QoPGS1C3K8eY=\n-----END PRIVATE KEY-----\n",
+  "client_email": "vision@fotomind-c819d.iam.gserviceaccount.com",
+  "client_id": "117810030240175556406",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/vision%40fotomind-c819d.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

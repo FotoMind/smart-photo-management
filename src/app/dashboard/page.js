@@ -26,6 +26,18 @@ export default function Dashboard() {
         })
     }, []);
 
+    const getLabels = () => {
+        // Add sign in function
+        console.log('MAKING REQ');
+        axios.post('/api/home', {})
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      };
+
     return (
         <main>
             <div>
@@ -33,6 +45,7 @@ export default function Dashboard() {
                     return <img src={url}/>
                 })}
             </div>
+            <input type="file" className="file-input file-input-bordered w-full max-w-xs" />
         </main>
     )
 }
