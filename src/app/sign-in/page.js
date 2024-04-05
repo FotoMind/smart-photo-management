@@ -44,13 +44,13 @@ export default function SignIn() {
   }
 
   return (
-    <div className="h-screen bg-white py-6">
+    <div className="bg-white py-6">
       <div className="flex justify-center text-4xl text-black flex-row w-screen h-15">
         <div className="flex basis-1/3 justify-center">
           
         </div>
         <div className="flex basis-1/3 justify-center text-blue">
-          FotoMind
+          
         </div>
         <div className="flex justify-center basis-1/3">
         </div>
@@ -60,11 +60,11 @@ export default function SignIn() {
           <div className="text-white text-center py-8 text-2xl">
             Sign in
           </div>
-          <div className="px-8 text-xl my-auto">
+          <div className="px-8 text-xl my-auto text-white">
             Email:
             <input className="bg-white w-full px-1 text-black" onChange={(e) => setEmail(e.target.value)}/>
           </div>
-          <div className="px-8 py-15 text-xl mt-5">
+          <div className="px-8 py-15 text-xl mt-5 text-white">
             Password:
             <input className="bg-white w-full px-1 text-black" onChange={(e) => setPassword(e.target.value)}/>
           </div>
@@ -75,16 +75,21 @@ export default function SignIn() {
             </button>
           </div>
           <div className="py-5 px-8">
-            <button className="h-10 w-full bg-blue rounded-lg" onClick={() => signIn()}>
+            <button className="h-10 w-full bg-blue rounded-lg text-white font-medium" onClick={() => signIn()}>
               Continue
             </button>
           </div>
-          <div className="text-white text-center py-10 content-center">
-            Login with Google: {`   `}
-            <button className="" onClick={() => googleSignUp()}>
+          <div className="text-white py-10 flex flex-row">
+            <div className="pl-12 pt-5 pr-5">
+            Login with Google:
+            </div>
+            <div className="">
+            <button className="border p-5 rounded-lg " onClick={() => googleSignUp()}>
               <FaGoogle className="text-3xl"/>
             </button>
+            </div>
           </div>
+          
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-export default async function sidebar() {
+export default function carousel() {
   return(
     <div className="carousel rounded-box">
     <div className="carousel-item">
