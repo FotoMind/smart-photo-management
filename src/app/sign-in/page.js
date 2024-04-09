@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
-import { auth } from "@/app/firebase/config";
+import { auth } from "@/app/firebase";
 import { FaGoogle } from "react-icons/fa";
 
 export default function SignIn() {
@@ -20,11 +20,11 @@ export default function SignIn() {
     // Add sign in function
     try {
       const res = await signInWithEmailAndPassword(email, password);
-      console.log({res});
-      sessionStorage.setItem('user', true);
+      localStorage.setItem('user', true);
       setEmail("");
       setPassword("");
       router.push("/dashboard");
+      console.log("Signed In with Email");
     } catch (e) {
       console.error(e);
     }
@@ -33,11 +33,11 @@ export default function SignIn() {
   const googleSignUp = async () => {
     try {
       const res = await signInWithGoogle();
-      console.log({res});
-      sessionStorage.setItem('user', true);
+      localStorage.setItem('user', true);
       setEmail("");
       setPassword("");
       router.push("/dashboard");
+      console.log("Signed In with Google");
     } catch (e) {
       console.error(e);
     }
