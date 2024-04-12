@@ -30,14 +30,15 @@ export default function Upload() {
     };
 
     return (
-            <div className="">
+            <div className="space-x-4">
                 <input 
                     type="file"
+                    className="file-input file-input-bordered file-input-sm w-full max-w-xs text-black"
                     onChange={(event) => {
                         setImageUpload(event.target.files[0]);
                     }}
                 />
-                <button type="button" onClick={uploadImage}>Upload Image</button>
+                <button type="button" className="btn btn-sm btn-neutral" onClick={uploadImage}>Upload Image</button>
             </div>
     )
 }

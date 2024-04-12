@@ -5,7 +5,7 @@ import { ref, listAll, getDownloadURL} from "firebase/storage"
 import { auth } from "@/app/firebase";
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { useAuthState } from "react-firebase-hooks/auth";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/sidebar";
 import TextInput from "../components/TextInput";
 import axios from 'axios';
 

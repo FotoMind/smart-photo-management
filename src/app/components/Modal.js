@@ -6,7 +6,7 @@ export default function Modal() {
             <button className="btn bg-white hover:bg-red hover:text-black px-24" onClick={()=>document.getElementById('my_modal_2').showModal()}>Upload</button>
             <dialog id="my_modal_2" className="modal">
                 <div className="modal-box bg-white">
-                    <h3 className="font-bold text-lg text-black">Hello!</h3>
+                    <h3 className="font-bold text-lg text-black">Upload an Image</h3>
                     <p className="py-4 text-black">Press ESC key or click outside to close</p>
                     <div className="">
                     <Upload></Upload>

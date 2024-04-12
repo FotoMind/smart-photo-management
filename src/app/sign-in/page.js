@@ -24,6 +24,7 @@ export default function SignIn() {
       setEmail("");
       setPassword("");
       router.push("/dashboard");
+      router.refresh()
       console.log("Signed In with Email");
     } catch (e) {
       console.error(e);
@@ -37,6 +38,7 @@ export default function SignIn() {
       setEmail("");
       setPassword("");
       router.push("/dashboard");
+      router.refresh()
       console.log("Signed In with Google");
     } catch (e) {
       console.error(e);
