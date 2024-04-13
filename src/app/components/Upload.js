@@ -1,9 +1,9 @@
 "use client"
 import { useState } from "react";
-import { storage } from "@/app/firebase";
+import { storage, db, auth } from "@/app/firebase";
 import { ref, uploadBytes} from "firebase/storage"
-import { auth } from "@/app/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { collection, doc, setDoc } from 'firebase/firestore';
 import axios from "axios";
 
 export default function Upload() {
@@ -14,18 +14,23 @@ export default function Upload() {
 
 
 
-    const uploadImage = () => {
+    const uploadImage = async () => {
         if (imageUpload == null) return;
             const imageRef = ref(storage, 'images/' + user.uid + '/' + imageUpload.name); // add user in curly brace: 'images/${user}'
-            uploadBytes(imageRef, imageUpload).then(() => {
-                alert("Image Uploaded!");
+            await uploadBytes(imageRef, imageUpload).then(() => {
+                console.log("Image Uploaded!");
         });
 
         axios.post('/api/home', {
             name: imageUpload.name,
             uid: user.uid,
-        }).then((response) => {
-            console.log(response.json().labels);
+        }).then(async (response) => {
+            console.log(response.data.labels)
+            const newImageRef = doc(db, 'users', user.uid, 'images', imageUpload.name);
+            await setDoc(newImageRef, {
+                labels: response.data.labels
+            });
+            console.log('labels added')
         })
     };
 

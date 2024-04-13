@@ -8,9 +8,9 @@ export async function GET() {
 }
 
 export async function POST(req, res) {
-    const data = req.json();
+    const data = await req.json();
     const imageRef = ref(storage, ('images/' + data.uid + '/' + data.name));
-    const image = getDownloadURL(imageRef);
+    const image = await getDownloadURL(imageRef);
     try {
       const visionClient = new ImageAnnotatorClient({
         keyFilename: './vision_key.json'

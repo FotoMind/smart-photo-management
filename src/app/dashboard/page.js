@@ -79,7 +79,7 @@ export default function Dashboard() {
 
                     <div className="px-10 py-10 columns-3 space-y-5 space-x-2">
                         {imageList.map((url) => {
-                            return <img className="rounded-xl shadow-2xl" src={url} />
+                            return <img key={url} className="rounded-xl shadow-2xl" src={url} />
                         })}
                     </div>
                     
