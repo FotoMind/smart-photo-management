@@ -18,8 +18,13 @@ export async function POST(req, res) {
 
       const [result] = await visionClient.labelDetection(image);
       const labels = result.labelAnnotations;
-      // console.log('Labels:', labels);
-      return NextResponse.json({'labels': labels});
+      const desc = [];
+
+      for (let x in labels) {
+        desc.push(labels[x].description)
+      }
+
+      return NextResponse.json({'labels': desc});
     } catch (error) {
       console.error('Vision API error:', error);
       return NextResponse.json({ 'Err': error });

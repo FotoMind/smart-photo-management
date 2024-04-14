@@ -3,7 +3,7 @@ import { useState } from "react";
 import { storage, db, auth } from "@/app/firebase";
 import { ref, uploadBytes} from "firebase/storage"
 import { useAuthState } from "react-firebase-hooks/auth";
-import { collection, doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc } from 'firebase/firestore';
 import axios from "axios";
 
 export default function Upload() {
@@ -25,12 +25,12 @@ export default function Upload() {
             name: imageUpload.name,
             uid: user.uid,
         }).then(async (response) => {
-            console.log(response.data.labels)
             const newImageRef = doc(db, 'users', user.uid, 'images', imageUpload.name);
             await setDoc(newImageRef, {
                 labels: response.data.labels
             });
-            console.log('labels added')
+            console.log('Labels Added')
+            window.location.reload();
         })
     };
 
