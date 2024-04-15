@@ -18,8 +18,8 @@ export default function Sidebar() {
                     <Modal></Modal>
                 </li>
                 
-                <li><a>Sidebar Item 1</a></li>
-                <li><a>Sidebar Item 2</a></li>
+                <li><a>Photos</a></li>
+                <li><a>Albums</a></li>
                 </ul>
             </div>
         </div>

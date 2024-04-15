@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { storage, auth, db } from "@/app/firebase";
 import { useRouter } from 'next/navigation'
 import { ref, listAll, getDownloadURL, deleteObject} from "firebase/storage"
-import { doc, deleteDoc } from 'firebase/firestore';
+import { doc, getDoc, deleteDoc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth'
 import Sidebar from "../components/sidebar";
 import TextInput from "../components/TextInput";
@@ -16,6 +16,9 @@ export default function Dashboard() {
 
     const imageListRef = ref(storage, ('images/' + user)); // add user in curly brace: 'images/${user}'
     const [imageList, setImageList] = useState([]) // image array
+    const [imageUrls, setImageUrls] = useState([]) // image array
+    const [imageItems, setImageItems] = useState([]) // image array
+    const [searchQ, setSearchQ] = useState("");
 
 
     useEffect(() => {
@@ -30,17 +33,29 @@ export default function Dashboard() {
 
     const setImages = () => {
         listAll(imageListRef).then((response) => {
-            response.items.forEach((item) => {
+            response.items.forEach(async (item) => {
+                setImageItems((prev) => [...prev, item])
                 getDownloadURL(item).then((url) => {
+                    setImageUrls((prev) => [...prev, url])
                     setImageList((prev) => [...prev, url])
                 })
             })
         })
     }
 
+    const filterImages = async (query) => {
+        setImageList([])
+        for (let x in imageItems) {
+            const labels = await getDoc(doc(db, 'users', user, 'images', imageItems[x].name));
+            if (query == "" || labels.data().labels.includes(query.toLowerCase())) {
+                setImageList((prev) => [...prev, imageUrls[x]])
+            }
+        }
+    }
+
     const deleteImage = (url) => {
         const desertRef = ref(storage, url);
-        const name = String(desertRef.fullPath).split("/")[2]
+        const name = String(desertRef.name)
         
         deleteObject(desertRef).then(() => {
             const imageRef = doc(db, 'users', user, 'images', name);
@@ -66,11 +81,11 @@ export default function Dashboard() {
                 </div>
 
 
-                <div className="rows-2 border-dark-blue float-left">
+                <div className="rows-2 border-dark-blue float-left w-full">
 
                     <div className="py-5 px-5">
                         <div className="shadow-md">
-                            <input type="text" placeholder="Search" className="input w-full min-w-full bg-white" />
+                            <input onChange={(e) => {filterImages(e.target.value);}} type="text" placeholder="Search" className="input w-full min-w-full bg-white" />
                         </div>
                     </div>
 

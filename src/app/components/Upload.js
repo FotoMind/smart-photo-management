@@ -26,8 +26,9 @@ export default function Upload() {
             uid: user.uid,
         }).then(async (response) => {
             const newImageRef = doc(db, 'users', user.uid, 'images', imageUpload.name);
+            const lowerLabels = response.data.labels.map(word => word.toLowerCase());
             await setDoc(newImageRef, {
-                labels: response.data.labels
+                labels: lowerLabels
             });
             console.log('Labels Added')
             window.location.reload();
