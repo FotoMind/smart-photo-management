@@ -1,20 +1,34 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { getStorage } from "firebase/storage";
+import { getFirestore } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+import { getApp, getApps } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { GoogleAuthProvider } from "firebase/auth";
+
 const firebaseConfig = {
-  apiKey: "AIzaSyA5kA8SW7S5-2t3xI4-798xpcSV0Od2TME",
-  authDomain: "fotomind-c819d.firebaseapp.com",
-  projectId: "fotomind-c819d",
-  storageBucket: "fotomind-c819d.appspot.com",
-  messagingSenderId: "971456475055",
-  appId: "1:971456475055:web:9b57b990144d9360f9495a",
-  measurementId: "G-W5CJYDK697"
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+    senderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp()
+
+const auth = getAuth(app)
+const storage = getStorage(app);
+const db = getFirestore(app);
+
+const provider = new GoogleAuthProvider();
+provider.setCustomParameters({
+    'login_hint': 'user@example.com'
+  });
+
+export {app, auth, provider, storage, db}
